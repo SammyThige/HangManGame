@@ -1,6 +1,6 @@
 const wordEl = document.getElementById('word');
 const wrongLettersEl = document.getElementById('wrong-letters');
-const playAgainBtn = document.getElementById('play-button');
+const playAgainButton = document.getElementById('play-button');
 const popup = document.getElementById('popup-container');
 const notification = document.getElementById('notification-container');
 const finalMessage = document.getElementById('final-message');
@@ -8,7 +8,7 @@ const finalMessageRevealWord = document.getElementById('final-message-reveal-wor
 const figureParts = document.querySelectorAll('.figure-part');
 
 //These are the words that will be generated 
-const chosenwords = ['application', 'programming', 'interface', 'wizard','rock', 'paper', 'scissors'];
+const chosenwords = ['programming', 'interface', 'wizard','rock', 'paper', 'scissors','bottle','Bugatti'];
 //chosenwords.toLowerCase;
 //randomizes which word is selected
 let selectedWord = chosenwords[Math.floor(Math.random() * chosenwords.length)];
@@ -36,7 +36,7 @@ function displayWord() {
 	const innerWord = wordEl.innerText.replace(/[ \n]/g, '');
 
 	if (innerWord === selectedWord) {
-		finalMessage.innerText = 'Congratulations! You won! 😃';
+		finalMessage.innerText = 'Hooray! You won! 😃';
 		finalMessageRevealWord.innerText = '';
 		popup.style.display = 'flex';
 		playable = false;
@@ -64,8 +64,8 @@ function updateWrongLettersEl() {
 
 	// Check if lost
 	if (wrongLetters.length === figureParts.length) {
-		finalMessage.innerText = 'Unfortunately you lost. 😕';
-		finalMessageRevealWord.innerText = `...the word was: ${selectedWord}`;
+		finalMessage.innerText = 'Ooops you lost. 😕';
+		finalMessageRevealWord.innerText = `The word was: ${selectedWord}`;
 		popup.style.display = 'flex';
 		playable = false;
 	}
@@ -108,10 +108,10 @@ window.addEventListener('keydown', e => {
 });
 
 // Restart game and play again
-playAgainBtn.addEventListener('click', () => {
+playAgainButton.addEventListener('click', () => {
 	playable = true;
 
-	//  Empty arrays
+	//The splice keyword replaces existing elements from an array, and/or inserts new elements in their place.
 	correctLetters.splice(0);
 	wrongLetters.splice(0);
 
